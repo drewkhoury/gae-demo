@@ -1,0 +1,19 @@
+<a href="/">go back</a>
+
+<h1># Requirements</h1>
+
+<img src="/img/docker.png" width="100px" />
+<p><b>Docker</b> :: Make sure you can run docker commands on your workstation.</p>
+
+<hr />
+
+<img src="/img/container.jpg" width="100px" />
+<p><b>Development Container</b> :: Build the development container (based on google/cloud-sdk with a few added libraries for our demo)</p>
+<pre>cd gcp-dev && docker build -t gcp-dev . && ../</pre>
+
+<hr />
+
+<img src="/img/google-cloud.png" width="300px" />
+<p><b>Authenticate to Google</b> :: Use your Google Account to authenitcate to <a href="https://console.cloud.google.com/">Google Cloud</a> (you'll need "an active trial" or "valid payment method" configured before you can create cloud resrouces).</p>
+<p>This will create a container that we'll use to make API calls for AutomatedDevOps(tm)</p>
+<pre>docker run -ti --name gcloud-config google/cloud-sdk gcloud auth login</pre>

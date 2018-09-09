@@ -1,0 +1,37 @@
+<a href="/">go back</a>
+
+<h1># Deployment Scripts</h1>
+
+<p><i>Note: Because deployments only require the google sdk, you can use `google/cloud-sdk:alpine` (55mb) instead of building `gcp-dev` ... however if you already have `gcp-dev` that will work just fine too.</i></p>
+
+<h2>New Project and Deployment</h2>
+You can create a new project, "google-app-engine" app, and do deployments in a single container:
+<pre>
+MY_PROJECT=$(mktemp -u devops-demo-XXXXXX| tr '[:upper:]' '[:lower:]')
+echo $MY_PROJECT
+
+docker run --rm -ti --volumes-from gcloud-config \
+-v "$PWD":/usr/src/myapp -w /usr/src/myapp \
+-e CLOUDSDK_CORE_PROJECT=${MY_PROJECT} \
+gcp-dev bash -c '/usr/src/myapp/deploy.sh'
+</pre>
+
+<h2>More  Info</h2>
+
+deploy.sh will run the following commands:
+<pre>
+gcloud projects create ${CLOUDSDK_CORE_PROJECT} --name="devops demo project" --labels=type=test
+gcloud app create --region=australia-southeast1 --project ${CLOUDSDK_CORE_PROJECT}
+gcloud app deploy --quiet
+</pre>
+
+You can run one-off commands too:
+<pre>
+gcp-dev bash -c 'gcloud app deploy --quiet'
+</pre>
+
+or just shell into the container:
+
+<pre>
+gcp-dev bash
+</pre>

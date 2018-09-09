@@ -1,0 +1,19 @@
+<a href="/">go back</a>
+
+<h1># Local Environment</h1>
+
+Spin up your own Google Cloud locally!
+
+<pre>
+docker run \
+-it --rm \
+-p 8000:8000 \
+-p 8080:8080 \
+-v "$PWD":/usr/src/myapp \
+-w /usr/src/myapp \
+gcp-dev bash -c 'dev_appserver.py --host 0.0.0.0 --admin_host 0.0.0.0 --port=8080 app.yaml --enable_sendmail --enable_console'
+</pre>
+
+<hr />
+Web Server = <a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a> <br />
+Admin Console = <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a>
