@@ -4,6 +4,8 @@
 ## 1) Docker
 Make sure you can run `docker` commands on your workstation.
 
+https://www.docker.com/products/docker-desktop
+
 ## 2) Development Container (For a local env)
 
 Build the development container (based on google/cloud-sdk):
