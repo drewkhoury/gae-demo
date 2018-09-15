@@ -1,6 +1,10 @@
 # I'm in the fast lane
-`cd gcp-dev && docker build -t gcp-dev . && ../`
-`docker run -ti --name gcloud-config google/cloud-sdk gcloud auth login`
+
+```
+cd gcp-dev && docker build -t gcp-dev . && ../
+
+docker run -ti --name gcloud-config google/cloud-sdk gcloud auth login
+```
 
 For full requirements, see https://github.com/drewkhoury/gae-demo/wiki/Requirements
 
