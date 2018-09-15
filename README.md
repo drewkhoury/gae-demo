@@ -1,32 +1,32 @@
 # I'm in the fast lane
 
+Local development environment for this app:
 ```
-cd gcp-dev && docker build -t gcp-dev . && ../
-
-docker run -ti --name gcloud-config google/cloud-sdk gcloud auth login
-```
-
-For full requirements, see https://github.com/drewkhoury/gae-demo/wiki/Requirements
-
-# Local Environment
-
-Spin up your own Google Cloud locally!
-
-```
-docker-compose local
+docker-compose up local
 ```
 
 - Web Server = http://localhost:8080/
 - Admin Console = http://localhost:8000/
 
-
-See https://github.com/drewkhoury/gae-demo/wiki/Local-Environment for more info,
-
-# Deploy
-
+Deploy this app (auth to google for first time, then create new project + deploy code):
 ```
-MY_PROJECT=$(mktemp -u devops-demo-XXXXXX| tr '[:upper:]' '[:lower:]')
-docker-compose new-deploy
+docker volume create gcloud-config-volume
+docker run -ti --name gcloud-config-container -v gcloud-config-volume:/root/.config google/cloud-sdk gcloud auth login
+
+docker-compose up new-deploy
 ```
 
-See https://github.com/drewkhoury/gae-demo/wiki/Deployments for more info.
+Deploy latest code to existing project:
+```
+# deploy an existing project
+export CLOUDSDK_CORE_PROJECT=devops-demo-xxx # (use project id from your first deployment)
+docker-compose up re-deploy
+```
+
+Browse to: https://${CLOUDSDK_CORE_PROJECT}.appspot.com
+
+# More Info
+
+- https://github.com/drewkhoury/gae-demo/wiki/Requirements
+- https://github.com/drewkhoury/gae-demo/wiki/Local-Environment
+- https://github.com/drewkhoury/gae-demo/wiki/Deployments
