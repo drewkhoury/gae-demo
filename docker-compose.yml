@@ -1,0 +1,40 @@
+version: '3'
+services:
+  local:
+    build: .
+    ports:
+     - "8000:8000"
+     - "8080:8080"     
+    volumes:
+     - .:/usr/src/myapp
+    image: "gcp-dev:latest"
+  command: >
+    bash -c "dev_appserver.py --host 0.0.0.0 --admin_host 0.0.0.0 --port=8080 app.yaml --enable_sendmail --enable_console"
+
+  new-deploy:
+    build: .
+    ports:
+     - "8000:8000"
+     - "8080:8080"     
+    volumes:
+     - .:/usr/src/myapp
+     - gcloud-config
+    image: "gcp-dev:latest"
+    env:
+     - CLOUDSDK_CORE_PROJECT=${MY_PROJECT}
+  command: >
+    bash -c "/usr/src/myapp/new-deploy.sh"
+
+  re-deploy:
+    build: .
+    ports:
+     - "8000:8000"
+     - "8080:8080"     
+    volumes:
+     - .:/usr/src/myapp
+     - gcloud-config
+    image: "gcp-dev:latest"
+    env:
+     - CLOUDSDK_CORE_PROJECT=${MY_PROJECT}
+  command: >
+    bash -c "/usr/src/myapp/re-deploy.sh"
