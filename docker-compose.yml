@@ -9,13 +9,13 @@ services:
      - .:/usr/src/myapp
     image: "drewkhoury/gcp-dev:latest"
     command: >
-      bash -c "cd /usr/src/myapp && dev_appserver.py --host 0.0.0.0 --admin_host 0.0.0.0 --port=8080 app.yaml --enable_sendmail --enable_console"
+      bash -c "dev_appserver.py --host 0.0.0.0 --admin_host 0.0.0.0 --port=8080 app.yaml --enable_sendmail --enable_console"
 
   new-deploy:
     volumes:
      - .:/usr/src/myapp
      - gcloud-config-volume:/root/.config
-    image: "drewkhoury/gcp-dev:latest"
+    image: "google/cloud-sdk:alpine"
     command: >
       bash -c "/usr/src/myapp/deploy/new-deploy.sh"
 
@@ -23,7 +23,7 @@ services:
     volumes:
      - .:/usr/src/myapp
      - gcloud-config-volume:/root/.config
-    image: "drewkhoury/gcp-dev:latest"
+    image: "google/cloud-sdk:alpine"
     environment:
      - CLOUDSDK_CORE_PROJECT
     command: >

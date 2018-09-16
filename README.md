@@ -1,5 +1,11 @@
 # I'm in the fast lane
 
+Auth to Google
+```
+docker volume create gcloud-config-volume
+docker run -ti --name gcloud-config-container -v gcloud-config-volume:/root/.config google/cloud-sdk gcloud auth login
+```
+
 Local development environment for this app:
 ```
 docker-compose up local
@@ -8,11 +14,8 @@ docker-compose up local
 - Web Server = http://localhost:8080/
 - Admin Console = http://localhost:8000/
 
-Deploy this app (auth to google for first time, then create new project + deploy code):
+Create a new Google Cloud Project and deploy code:
 ```
-docker volume create gcloud-config-volume
-docker run -ti --name gcloud-config-container -v gcloud-config-volume:/root/.config google/cloud-sdk gcloud auth login
-
 docker-compose up new-deploy
 ```
 
