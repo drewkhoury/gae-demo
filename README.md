@@ -3,7 +3,9 @@
 Auth to Google
 ```
 docker volume create gcloud-config-volume
-docker run -ti --name gcloud-config-container -v gcloud-config-volume:/root/.config google/cloud-sdk gcloud auth login
+
+docker run -ti --name gcloud-config-container -v gcloud-config-volume:/root/.config \
+google/cloud-sdk:alpine gcloud auth login
 ```
 
 Local development environment for this app:
@@ -21,12 +23,12 @@ docker-compose up new-deploy
 
 Deploy latest code to existing project:
 ```
-# deploy an existing project
 export CLOUDSDK_CORE_PROJECT=devops-demo-xxx # (use project id from your first deployment)
+
 docker-compose up re-deploy
 ```
 
-Browse to: https://${CLOUDSDK_CORE_PROJECT}.appspot.com
+Browse to your version of: https://devops-demo-xxx.appspot.com
 
 # More Info
 
