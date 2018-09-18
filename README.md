@@ -1,36 +1,42 @@
 # I'm in the fast lane
 
-Auth to Google
+*Oh you're in a hurry? This should only take 10 minutes or less!*
+
+1) Authenticate to GoogleCloud with your Google Account:
 ```
 docker volume create gcloud-config-volume
 
-docker run -ti --name gcloud-config-container -v gcloud-config-volume:/root/.config \
+docker run --rm -ti -v gcloud-config-volume:/root/.config \
 google/cloud-sdk:alpine gcloud auth login
 ```
 
-Local development environment for this app:
+**Note: Make sure you run the following commands from this folder `gae-demo/`...**
+
+2) Create a local development environment for this app:
 ```
-docker-compose up local
+~/code/gae-demo $  docker-compose up local
 ```
 
 - Web Server = http://localhost:8080/
 - Admin Console = http://localhost:8000/
 
-Create a new Google Cloud Project and deploy code:
+3) Create a new Google Cloud Project and deploy this app:
 ```
-docker-compose up new-deploy
-```
-
-Deploy latest code to existing project:
-```
-export CLOUDSDK_CORE_PROJECT=devops-demo-xxx # (use project id from your first deployment)
-
-docker-compose up re-deploy
+~/code/gae-demo $  docker-compose up new-deploy
 ```
 
-Browse to your version of: https://devops-demo-xxx.appspot.com
+Browse to your production-ready application (replace xxx with your project id from step 3):
+- https://devops-demo-xxx.appspot.com
+
+4) Make any changes you like to the application, then deploy the latest code to an existing project (replace xxx with your project id from step 3):
+```
+~/code/gae-demo $  export CLOUDSDK_CORE_PROJECT=devops-demo-xxx
+~/code/gae-demo $  docker-compose up re-deploy
+```
 
 # More Info
+
+Detailed instructions can be found here:
 
 - https://github.com/drewkhoury/gae-demo/wiki/Requirements
 - https://github.com/drewkhoury/gae-demo/wiki/Local-Environment
