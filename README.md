@@ -10,7 +10,7 @@ docker run --rm -ti -v gcloud-config-volume:/root/.config \
 google/cloud-sdk:alpine gcloud auth login
 ```
 
-**Note: Make sure you run the following commands from this folder `gae-demo/`...**
+**Note: Make sure you run the following commands from this repo's root folder. i.e `gae-demo/`...**
 
 2) Create a local development environment for this app:
 ```
