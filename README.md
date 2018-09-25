@@ -5,7 +5,8 @@
 # create a volume where we will store authentication credentials
 docker volume create gcloud-config-volume
 
-# generate the authenetication credentials (use the link provided to login with your Google Account and generate a token)
+# generate the authenetication credentials
+# note: use the link provided to login with your Google Account and generate a token
 docker run --rm -ti -v gcloud-config-volume:/root/.config google/cloud-sdk:alpine gcloud auth login
 ```
 
