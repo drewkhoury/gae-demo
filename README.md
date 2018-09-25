@@ -1,5 +1,12 @@
 *Oh you're in a hurry? This should only take 10 minutes (or less!)*
 
+**Assumptions:** Git, Docker, A google Account
+
+Make sure you've cloned this repo, and you're in the root folder:
+```
+git clone git@github.com:drewkhoury/gae-demo.git && cd gae-demo/
+```
+
 ### 1) Authenticate to Google Cloud with your Google Account
 ```
 # create a volume where we will store authentication credentials
@@ -9,8 +16,6 @@ docker volume create gcloud-config-volume
 # note: this command will give you a google-link that you can use to generate a token
 docker run --rm -ti -v gcloud-config-volume:/root/.config google/cloud-sdk:alpine gcloud auth login
 ```
-
-Note: Run the following commands from this repo's root folder. i.e `gae-demo/`...
 
 ### 2) Create a local development environment for this app
 ```
