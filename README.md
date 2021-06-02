@@ -4,7 +4,7 @@
 
 Make sure you've cloned this repo, and you're in the root folder:
 ```
-git clone git@github.com:drewkhoury/gae-demo.git && cd gae-demo/
+git clone https://github.com/drewkhoury/gae-demo.git && cd gae-demo/
 ```
 
 ### 1) Authenticate to Google Cloud with your Google Account
