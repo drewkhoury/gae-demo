@@ -1,6 +1,6 @@
-*Oh you're in a hurry? This should only take 10 minutes (or less!)*
+*Oh you're in a hurry? It should only take 10 minutes (or less!) to deploy to production on your first try*
 
-**Assumptions:** Git, Docker, A google Account
+**Assumptions:** Git, Docker, A Google User Account
 
 Make sure you've cloned this repo, and you're in the root folder:
 ```
@@ -19,7 +19,7 @@ docker run --rm -ti -v gcloud-config-volume:/root/.config google/cloud-sdk:alpin
 
 ### 2) Create a local development environment for this app
 ```
-~/code/gae-demo $  docker-compose up local
+docker-compose up local
 ```
 
 - Web Server = http://localhost:8080/
@@ -27,7 +27,7 @@ docker run --rm -ti -v gcloud-config-volume:/root/.config google/cloud-sdk:alpin
 
 ### 3) Create a new Google Cloud Project and deploy this app
 ```
-~/code/gae-demo $  docker-compose up new-deploy
+docker-compose up new-deploy
 ```
 
 Browse to your production-ready application (replace xxx with your project id):
@@ -38,8 +38,8 @@ Browse to your production-ready application (replace xxx with your project id):
 Make any changes you like to the application, then deploy the latest code (replace xxx with your project id from step 3).
 
 ```
-~/code/gae-demo $  export CLOUDSDK_CORE_PROJECT=devops-demo-xxx
-~/code/gae-demo $  docker-compose up re-deploy
+export CLOUDSDK_CORE_PROJECT=devops-demo-xxx
+docker-compose up re-deploy
 ```
 
 # More Info
