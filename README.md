@@ -30,6 +30,10 @@ docker-compose up local
 docker-compose up new-deploy
 ```
 
+Note: You may see an error message about enabling the API on your first try, follow the link to "enable Cloud Build API". This should prompt you to link to a billing account. Once this is done, you can try a `re-deploy`.
+
+AppEngine costs money but not much, plus there's a free tier: https://cloud.google.com/appengine/pricing
+
 Browse to your production-ready application (replace xxx with your project id):
 - https://devops-demo-xxx.appspot.com
 
